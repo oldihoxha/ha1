@@ -90,5 +90,30 @@ class CalculatorTest {
 
 
     //TODO hier weitere Tests erstellen
+
+    @Test
+    @DisplayName("should be able to display the transponse form of the given number ")
+    void testTransponseNumber() {
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(2);
+        calc.pressUnaryOperationKey("1/x");
+
+        String expected = "0.5";
+        String actual = calc.readScreen();
+
+
+        assertEquals(expected, actual);
+
+
+    }
+
+
+
+
 }
+
+
+
+
+
 
