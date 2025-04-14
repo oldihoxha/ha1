@@ -18,6 +18,7 @@ public class Calculator {
      * @return den aktuellen Bildschirminhalt als String
      */
     public String readScreen() {
+
         return screen;
     }
 
@@ -29,9 +30,11 @@ public class Calculator {
      * @param digit Die Ziffer, deren Taste gedrückt wurde
      */
     public void pressDigitKey(int digit) {
-        if(digit > 9 || digit < 0) throw new IllegalArgumentException();
+        if(digit > 9 || digit < 0)
+            throw new IllegalArgumentException();
 
-        if(screen.equals("0") || latestValue == Double.parseDouble(screen)) screen = "";
+        if(screen.equals("0") || latestValue == Double.parseDouble(screen))
+            screen = "";
 
         screen = screen + digit;
     }
@@ -81,8 +84,12 @@ public class Calculator {
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
-        if(screen.equals("NaN")) screen = "Error";
-        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.equals("Infinity"))
+            screen = "Error";
+        if (screen.equals("NaN"))
+            screen = "Error";
+        if(screen.contains(".") && screen.length() > 11)
+            screen = screen.substring(0, 10);
 
     }
 
@@ -94,7 +101,8 @@ public class Calculator {
      * Beim zweimaligem Drücken, oder wenn bereits ein Trennzeichen angezeigt wird, passiert nichts.
      */
     public void pressDotKey() {
-        if(!screen.contains(".")) screen = screen + ".";
+        if(!screen.contains("."))
+            screen = screen + ".";
     }
 
     /**
@@ -126,8 +134,11 @@ public class Calculator {
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
-        if(screen.equals("Infinity")) screen = "Error";
-        if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
-        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
+        if(screen.equals("Infinity"))
+            screen = "Error";
+        if(screen.endsWith(".0"))
+            screen = screen.substring(0,screen.length()-2);
+        if(screen.contains(".") && screen.length() > 11)
+            screen = screen.substring(0, 10);
     }
 }
