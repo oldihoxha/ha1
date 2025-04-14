@@ -122,6 +122,18 @@ class CalculatorTest {
 
 
 
+    @Test
+    @DisplayName("should be able to display the result of equals key when no other operation is initiated ")
+    void testEqualsKey(){
+        Calculator calc = new Calculator();
+        calc.pressEqualsKey();
+        String expected = "0";
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+
+
 
 
 
