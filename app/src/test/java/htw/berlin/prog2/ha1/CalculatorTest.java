@@ -107,6 +107,32 @@ class CalculatorTest {
 
     }
 
+    @Test
+    @DisplayName("should display Error when trying to find the inverse of 0")
+    void testInverse(){
+        Calculator calc = new Calculator();
+        calc.pressDigitKey(0);
+        calc.pressUnaryOperationKey("1/x");
+
+        String expected = "Error"; // weil hier du immer Infinity bekommst, wenn du iwas durch 0 dividierst, in dem <code stand aber nicht das <ding mit dem Infinity, das stand nur bei dem Division. Und jetzt wenn wir anstatt x "0" auswählen, dann dividieren wir quasi auch durch 0 beim 1/x
+        String actual = calc.readScreen();
+        assertEquals(expected, actual);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
