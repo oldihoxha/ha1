@@ -73,6 +73,11 @@ public class Calculator {
      * Beim Drücken der Taste wird direkt die Operation auf den aktuellen Zahlenwert angewendet und
      * der Bildschirminhalt mit dem Ergebnis aktualisiert.
      * @param operation "√" für Quadratwurzel, "%" für Prozent, "1/x" für Inversion
+     * Beim Inversion wird der Kehrwert des gedrückten Wertes von dem Benutzer berechnet.
+     * Falls der Benutzer "0" drückt, bekommt der Benutzer das Ergebnis "Infinity"
+     *"Infinity" ist als Fehler interpretiert vom Taschenrechner.
+     * Die Methode überprüft ob auf der Bildschirm Infinity steht.
+     * Falls auf der Bildschirm "Infinity" steht,wird das durch "Error" ersetzt.
      */
     public void pressUnaryOperationKey(String operation) {
         latestValue = Double.parseDouble(screen);
@@ -124,7 +129,10 @@ public class Calculator {
      * Wird die Taste weitere Male gedrückt (ohne andere Tasten dazwischen), so wird die letzte
      * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
      * und das Ergebnis direkt angezeigt.
+     * Wird überprüft ob eine Operation gedrückt ist.
+     * Falls keine Operation gedrückt ist,dann beendet return die Methode,um Abstürze,fehlende oder ungültige Operationen zu vermeiden
      */
+
     public void pressEqualsKey() {
         if(latestOperation.isEmpty())
             return;
